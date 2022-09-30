@@ -1,4 +1,4 @@
-function Test() {
+export function Test() {
 	return (
 		<>
 			<h2>Testando componente</h2>
@@ -6,5 +6,3 @@ function Test() {
 		</>
 	);
 }
-
-export default Test;

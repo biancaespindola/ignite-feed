@@ -1,4 +1,4 @@
-import Test from './Test';
+import { Test } from './Test';
 import { useState } from 'react';
 
 function App() {
@@ -7,6 +7,9 @@ function App() {
 	return (
 		<div>
 			<h1>Ciao mondo!</h1>
+			<Test />
+			<Test />
+			<Test />
 			<Test />
 		</div>
 	);
