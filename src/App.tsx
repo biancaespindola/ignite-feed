@@ -1,12 +1,15 @@
 import { Post } from './Post';
 import { useState } from 'react';
 
+import './assets/styles.css';
+import { Header } from './components/Header';
+
 function App() {
 	const [count, setCount] = useState(0);
 	//passando propriedades para componentes
 	return (
 		<div>
-			<h1>Ciao mondo!</h1>
+			<Header />
 			<Post
 				author="Bianca Espindola"
 				content="bom dia pessoaaaal!!!!!!!!"
