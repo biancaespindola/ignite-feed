@@ -1,7 +1,7 @@
 import { Post } from './Post';
 import { useState } from 'react';
 
-import './assets/styles.css';
+import './global.css';
 import { Header } from './components/Header';
 
 function App() {
