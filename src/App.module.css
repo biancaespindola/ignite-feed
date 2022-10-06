@@ -1,0 +1,12 @@
+.wrapper {
+	max-width: 70rem; /* altura maxima*/
+	/* olhando no Figma e fazendo o calculo do boxsize então pegou esse valor e diviiu  pelo rem que é 16 */
+	margin: 2rem auto; /* uar esse auto faz com que os items fiquem centralizados em tela */
+	padding: 0 1rem; /* quando diminuir a tela o conteudo não ficar colado nas laterais*/
+
+	display: grid;
+	grid-template-columns: 256px 1fr; /* primeira coluna com largura fixa e a segunda ocupa o lugar que sobrar */
+	gap: 2rem; /*espaçamento entre as colunas*/
+	align-items: flex-start; /*fazer a sidebar e o main fiquem alinhados pelo topo e não o padrão de esticar e preencher o tamanho do maior item*/
+	/*o chrome mostra as opções do grid e flex*/
+}

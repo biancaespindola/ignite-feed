@@ -1,8 +1,10 @@
 import { Post } from './Post';
 import { useState } from 'react';
 
-import './global.css';
 import { Header } from './components/Header';
+
+import './global.css';
+import styles from './App.module.css';
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -10,18 +12,24 @@ function App() {
 	return (
 		<div>
 			<Header />
-			<Post
-				author="Bianca Espindola"
-				content="bom dia pessoaaaal!!!!!!!!"
-			/>
-			<Post
-				author="Bianca Espindola"
-				content="tudo bem com vocês? rsrsrsrsrs"
-			/>
-			<Post
-				author="Bianca Espindola"
-				content="hoje o dia está maravilhoso"
-			/>
+
+			<div className={styles.wrapper}>
+				<aside>sidebar</aside>
+				<main>
+					<Post
+						author="Bianca Espindola"
+						content="bom dia pessoaaaal!!!!!!!!"
+					/>
+					<Post
+						author="Bianca Espindola"
+						content="tudo bem com vocês? rsrsrsrsrs"
+					/>
+					<Post
+						author="Bianca Espindola"
+						content="hoje o dia está maravilhoso"
+					/>
+				</main>
+			</div>
 		</div>
 	);
 }
