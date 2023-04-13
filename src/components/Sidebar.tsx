@@ -10,6 +10,11 @@ export default function Sidebar() {
 			/>
 
 			<div className={styles.profile}>
+				<img
+					src="https://github.com/biancaespindola.png"
+					alt="profile image"
+				/>
+
 				<strong>Bianca Espindola</strong>
 				<span>Web developer</span>
 			</div>
