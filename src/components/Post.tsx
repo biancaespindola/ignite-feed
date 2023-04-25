@@ -32,13 +32,15 @@ export function Post() {
 				</p>
 
 				<p>
-					To access just click
+					To access just click:{' '}
 					<a href="">https://biancaespindolaportfolio.netlify.app/</a>
 				</p>
 
 				<p>
 					{' '}
-					Thank you for helping me. <a href=""> #nlw #rockseat </a>
+					Thank you for helping me. <br />
+					<a href=""> #nlw </a> {''} <a href="">#rockseat </a> {''}
+					<a href="">#frontend</a> {''} <a href="">#portifolio</a>{' '}
 				</p>
 			</div>
 		</article>
