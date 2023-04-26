@@ -43,6 +43,14 @@ export function Post() {
 					<a href="">#frontend</a> {''} <a href="">#portifolio</a>{' '}
 				</p>
 			</div>
+
+			<form className={styles.commentForm}>
+				<strong>Give me a feedback</strong>
+				<textarea placeholder="Your comment" />
+				<footer>
+					<button type="submit">Publish</button>
+				</footer>
+			</form>
 		</article>
 	);
 }
