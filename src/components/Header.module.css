@@ -6,6 +6,10 @@
 }
 
 .header img {
-	height: 2rem;
+	height: 1.8rem;
 	/* 32px  quando 1rem = 16px*/
+}
+
+.header strong {
+	padding-left: 4px;
 }
