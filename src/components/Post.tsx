@@ -2,6 +2,13 @@ import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
+/**
+ * props Post
+ * author: {avatar_url: string; name: string; role: string}
+ * publishedAt: Date
+ * content: string
+ */
+
 export function Post() {
   return (
     <article className={styles.post}>
@@ -9,7 +16,6 @@ export function Post() {
         <div className={styles.author}>
           <Avatar
             alt="profile image user"
-           
             src="https://github.com/biancaespindola.png"
           />
           <div className={styles.authorInfo}>
@@ -21,26 +27,7 @@ export function Post() {
           Published at 1h
         </time>
       </header>
-      <div className={styles.content}>
-        <p>Hi guys</p>
-
-        <p>
-          Today I finally put it on the air by portfolio. I'm very happy with
-          the result. I put several projects that I did recently.
-        </p>
-
-        <p>
-          To access just click:{" "}
-          <a href="">https://biancaespindolaportfolio.netlify.app/</a>
-        </p>
-
-        <p>
-          {" "}
-          Thank you for helping me. <br />
-          <a href=""> #nlw </a> {""} <a href="">#rockseat </a> {""}
-          <a href="">#frontend</a> {""} <a href="">#portifolio</a>{" "}
-        </p>
-      </div>
+      <div className={styles.content}></div>
 
       <form className={styles.commentForm}>
         <strong>Give me a feedback</strong>
