@@ -13,7 +13,7 @@ import styles from "./App.module.css";
  * content: string
  */
 
-const post = [
+const posts = [
   {
     id: 1,
     author: {
@@ -39,7 +39,7 @@ const post = [
     author: {
       avatarUrl: "https://github.com/marconvtr.png",
       name: "Victor Marcon",
-      role: "Front End Developer",
+      role: "Embedded Developer",
     },
     content: [
       { type: "paragraph", content: "Hi guys" },
@@ -66,18 +66,16 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Bianca Espindola"
-            content="bom dia pessoaaaal!!!!!!!!"
-          />
-          <Post
-            author="Bianca Espindola"
-            content="tudo bem com vocês? rsrsrsrsrs"
-          />
-          <Post
-            author="Bianca Espindola"
-            content="hoje o dia está maravilhoso"
-          />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </div>

@@ -9,18 +9,28 @@ import styles from "./Post.module.css";
  * content: string
  */
 
-export function Post() {
+interface PostProps {
+  author: {
+    avatarUrl: string;
+    name: string;
+    role: string;
+  };
+  content: {
+    type: string;
+    content: string;
+  }[];
+  publishedAt: Date;
+}
+
+export function Post(props: PostProps) {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar
-            alt="profile image user"
-            src="https://github.com/biancaespindola.png"
-          />
+          <Avatar alt="profile image user" src={props.author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Bianca Espindola</strong>
-            <span>Front End Developer</span>
+            <strong>{props.author.name}</strong>
+            <span>{props.author.role}</span>
           </div>
         </div>
         <time title="20 April 2023 at 12:00 pm" dateTime="2023-04-20 12:00:00">
