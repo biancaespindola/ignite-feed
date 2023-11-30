@@ -46,7 +46,7 @@ const posts = [
       {
         type: "paragraph",
         content:
-          "Today I finally released my portfolio. I'm very happy with the result. I put several projects that I did recently.",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
       { type: "link", content: "https://biancaespindola.netlify.app/" },
       { type: "paragraph", content: "Thank you for helping me." },

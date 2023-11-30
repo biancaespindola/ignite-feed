@@ -37,7 +37,19 @@ export function Post(props: PostProps) {
           Published at 1h
         </time>
       </header>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+		{props.content.map((line) => {
+		  if (line.type === "paragraph") {
+			return <p key={line.content}>{line.content}</p>;
+		  } else if (line.type === "link") {
+			return (
+			  <p key={line.content}>
+				<a href="#">{line.content}</a>
+			  </p>
+			);
+		  }
+		})}
+	  </div>
 
       <form className={styles.commentForm}>
         <strong>Give me a feedback</strong>
