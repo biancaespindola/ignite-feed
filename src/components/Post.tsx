@@ -51,6 +51,8 @@ export function Post(props: PostProps) {
         <Comment />
         <Comment />
         <Comment />
+        <Comment />
+        <Comment />
       </div>
     </article>
   );
