@@ -1,5 +1,7 @@
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
+import { format, formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import styles from "./Post.module.css";
 
 /**
@@ -23,6 +25,19 @@ interface PostProps {
 }
 
 export function Post(props: PostProps) {
+  const publishedDateFormatted = format(
+    props.publishedAt,
+    "dd 'de' LLLL 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
+    addSuffix: true,
+    locale: ptBR,
+  });
+
   return (
     <article className={styles.post}>
       <header>
@@ -33,23 +48,26 @@ export function Post(props: PostProps) {
             <span>{props.author.role}</span>
           </div>
         </div>
-        <time title="20 April 2023 at 12:00 pm" dateTime="2023-04-20 12:00:00">
-          Published at 1h
+        <time
+          title={publishedDateFormatted}
+          dateTime={props.publishedAt.toISOString()}
+        >
+          {publishedDateRelativeToNow}
         </time>
       </header>
       <div className={styles.content}>
-		{props.content.map((line) => {
-		  if (line.type === "paragraph") {
-			return <p key={line.content}>{line.content}</p>;
-		  } else if (line.type === "link") {
-			return (
-			  <p key={line.content}>
-				<a href="#">{line.content}</a>
-			  </p>
-			);
-		  }
-		})}
-	  </div>
+        {props.content.map((line) => {
+          if (line.type === "paragraph") {
+            return <p key={line.content}>{line.content}</p>;
+          } else if (line.type === "link") {
+            return (
+              <p key={line.content}>
+                <a href="#">{line.content}</a>
+              </p>
+            );
+          }
+        })}
+      </div>
 
       <form className={styles.commentForm}>
         <strong>Give me a feedback</strong>
