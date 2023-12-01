@@ -3,6 +3,7 @@ import { Comment } from "./Comment";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import styles from "./Post.module.css";
+import { useState } from "react";
 
 /**
  * props Post
@@ -25,6 +26,8 @@ interface PostProps {
 }
 
 export function Post(props: PostProps) {
+  const [comments, setComments] = useState([1, 2]);
+
   const publishedDateFormatted = format(
     props.publishedAt,
     "dd 'de' LLLL 'às' HH:mm'h'",
@@ -32,6 +35,13 @@ export function Post(props: PostProps) {
       locale: ptBR,
     }
   );
+
+  function handleCreateNewComment(event: FormEvent) {
+    event.preventDefault();
+
+    //imutabilididade de estados
+    setComments([...comments, comments.length + 1]);
+  }
 
   const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
     addSuffix: true,
@@ -69,20 +79,19 @@ export function Post(props: PostProps) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Give me a feedback</strong>
         <textarea placeholder="Your comment" />
+
         <footer>
           <button type="submit">Publish</button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map((comment) => {
+          return <Comment />;
+        })}
       </div>
     </article>
   );
