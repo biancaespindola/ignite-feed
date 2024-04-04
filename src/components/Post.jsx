@@ -12,21 +12,21 @@ import { useState } from "react";
  * content: string
  */
 
-interface PostProps {
-  author: {
-    avatarUrl: string;
-    name: string;
-    role: string;
-  };
-  content: {
-    type: string;
-    content: string;
-  }[];
-  publishedAt: Date;
-}
+// interface PostProps {
+//   author: {
+//     avatarUrl: string,
+//     name: string,
+//     role: string,
+//   };
+//   content: {
+//     type: string,
+//     content: string,
+//   }[];
+//   publishedAt: Date;
+// }
 
-export function Post(props: PostProps) {
-  const [comments, setComments] = useState([1, 2]);
+export function Post(props) {
+  const [comments, setComments] = useState(["Good point of view", "Amazing!!"]);
 
   const publishedDateFormatted = format(
     props.publishedAt,
@@ -36,11 +36,14 @@ export function Post(props: PostProps) {
     }
   );
 
-  function handleCreateNewComment(event: FormEvent) {
+  function handleCreateNewComment() {
     event.preventDefault();
+    const newCommentsText = event.target.comment.value;
 
     //imutabilididade de estados
-    setComments([...comments, comments.length + 1]);
+    setComments([...comments, newCommentsText]);
+
+    event.target.comment.value = "";
   }
 
   const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
@@ -81,7 +84,7 @@ export function Post(props: PostProps) {
 
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Give me a feedback</strong>
-        <textarea placeholder="Your comment" />
+        <textarea name="comment" placeholder="Your comment" />
 
         <footer>
           <button type="submit">Publish</button>
@@ -90,7 +93,7 @@ export function Post(props: PostProps) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment />;
+          return <Comment content={comment} />;
         })}
       </div>
     </article>
