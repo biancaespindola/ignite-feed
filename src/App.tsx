@@ -68,6 +68,7 @@ export function App() {
         <main>
           {posts.map((post) => {
             return (
+              //passando propriedades para componentes usando keys para diferenciar cada post
               <Post
                 key={post.id}
                 author={post.author}

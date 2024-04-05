@@ -3,7 +3,7 @@ import { Comment } from "./Comment";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import styles from "./Post.module.css";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 
 /**
  * props Post
@@ -38,7 +38,7 @@ export function Post(props: PostProps) {
     }
   );
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: React.FormEvent) {
     event.preventDefault();
 
     //imutabilididade de estados
@@ -47,7 +47,9 @@ export function Post(props: PostProps) {
     setNewCommentText("");
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) {
     setNewCommentText(event.target.value);
   }
 
@@ -103,7 +105,7 @@ export function Post(props: PostProps) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment content={comment} />;
+          return <Comment key={comment} content={comment} />;
         })}
       </div>
     </article>
