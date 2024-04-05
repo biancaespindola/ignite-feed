@@ -21,6 +21,7 @@ interface PostProps {
   content: {
     type: string;
     content: string;
+    deleteComment: (content: string) => void;
   }[];
   publishedAt: Date;
 }
@@ -51,6 +52,16 @@ export function Post(props: PostProps) {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) {
     setNewCommentText(event.target.value);
+  }
+
+  function deleteComment(commentToDeleted: string) {
+    //posso passar funções como props no react :O
+    //imutabilidade: não alteramos a variavel, criamos um novo valor para ela.
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDeleted;
+    });
+
+    setComments(commentsWithoutDeletedOne);
   }
 
   const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
@@ -105,7 +116,13 @@ export function Post(props: PostProps) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={comment} content={comment} />;
+          return (
+            <Comment
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>
