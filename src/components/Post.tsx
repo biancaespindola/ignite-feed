@@ -12,21 +12,23 @@ import { useState } from "react";
  * content: string
  */
 
-// interface PostProps {
-//   author: {
-//     avatarUrl: string,
-//     name: string,
-//     role: string,
-//   };
-//   content: {
-//     type: string,
-//     content: string,
-//   }[];
-//   publishedAt: Date;
-// }
+interface PostProps {
+  author: {
+    avatarUrl: string;
+    name: string;
+    role: string;
+  };
+  content: {
+    type: string;
+    content: string;
+  }[];
+  publishedAt: Date;
+}
 
-export function Post(props) {
+export function Post(props: PostProps) {
   const [comments, setComments] = useState(["Good point of view", "Amazing!!"]);
+
+  const [newCommentText, setNewCommentText] = useState("");
 
   const publishedDateFormatted = format(
     props.publishedAt,
@@ -38,12 +40,15 @@ export function Post(props) {
 
   function handleCreateNewComment() {
     event.preventDefault();
-    const newCommentsText = event.target.comment.value;
 
     //imutabilididade de estados
-    setComments([...comments, newCommentsText]);
+    setComments([...comments, newCommentText]);
 
-    event.target.comment.value = "";
+    setNewCommentText("");
+  }
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value);
   }
 
   const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
@@ -84,7 +89,12 @@ export function Post(props) {
 
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Give me a feedback</strong>
-        <textarea name="comment" placeholder="Your comment" />
+        <textarea
+          name="comment"
+          placeholder="Your comment"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
 
         <footer>
           <button type="submit">Publish</button>
