@@ -51,7 +51,13 @@ export function Post(props: PostProps) {
   function handleNewCommentChange(
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) {
+    event?.target.setCustomValidity("");
     setNewCommentText(event.target.value);
+  }
+
+  function handleNewCommentInvalid() {
+    event?.target.setCustomValidity("Esse campo é obrigatório");
+    //target é o elemento que disparou o evento
   }
 
   function deleteComment(commentToDeleted: string) {
@@ -63,6 +69,8 @@ export function Post(props: PostProps) {
 
     setComments(commentsWithoutDeletedOne);
   }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
     addSuffix: true,
@@ -107,10 +115,15 @@ export function Post(props: PostProps) {
           placeholder="Your comment"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          //o required deixa o campo obrigatório e true é o padrão
+          required
         />
 
         <footer>
-          <button type="submit">Publish</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publish
+          </button>
         </footer>
       </form>
 
